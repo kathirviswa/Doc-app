@@ -1,6 +1,6 @@
 # React + Vite
 
-<div class=" flex flex-col items-center justify-center w-full h-full">
+<div class=" flex mx-auto items-center justify-center w-full h-full">
 <centre><img src="./src/assets/page1.png" alt="Screenshot 2023-08-29 121940" width="500" height="250"></centre>
 <img src="./src/assets/page2.png" alt="Screenshot 2023-08-29 121940" width="500" height="250">
 <img src="./src/assets/page3.png" alt="Screenshot 2023-08-29 121940" width="500" height="250">
