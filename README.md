@@ -1,6 +1,6 @@
 # React + Vite
 
-
+<div class=" flex-col ">
 <centre><img src="./src/assets/page1.png" alt="Screenshot 2023-08-29 121940" width="500" height="250"></centre>
 <img src="./src/assets/page2.png" alt="Screenshot 2023-08-29 121940" width="500" height="250">
 <img src="./src/assets/page3.png" alt="Screenshot 2023-08-29 121940" width="500" height="250">
@@ -10,7 +10,7 @@
 <img src="./src/assets/page7.png" alt="Screenshot 2023-08-29 121940" width="500" height="250">
 <img src="./src/assets/page8.png" alt="Screenshot 2023-08-29 121940" width="500" height="250">
 <img src="./src/assets/page9.png" alt="Screenshot 2023-08-29 121940" width="500" height="250">
-
+</div>
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
