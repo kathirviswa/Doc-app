@@ -4,8 +4,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { CiMenuFries } from "react-icons/ci";
 import { assets } from "../assets/assets";
-import {logout} from '../Firebase/Setup'
-
+import { logout } from '../Firebase/Setup';
 
 
 const Navbar = () => {

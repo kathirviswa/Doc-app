@@ -18,7 +18,8 @@ import MyProfile from './pages/MyProfile';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
-const navigate = useNavigate();
+// const navigate = useNavigate();
+
 const App = () => {
 
   useEffect(() => {
@@ -37,7 +38,7 @@ const App = () => {
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path='/' element={<Home/>}/>
+        <Route path='/' element={<Home/    >}/>
         <Route path='/doctors' element={<Doctors/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path="/doctors/:speciality" element={<Doctors/>}/>
