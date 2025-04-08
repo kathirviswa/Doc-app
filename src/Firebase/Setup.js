@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { createUserWithEmailAndPassword, getAuth,signInWithEmailAndPassword,signOut } from "firebase/auth";
-import { getFirestore ,doc, addDoc} from "firebase/firestore";
+import { getFirestore ,collection, addDoc} from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -23,7 +23,8 @@ const signup = async (email, password, name) => {
   try {
     const userresponse = await createUserWithEmailAndPassword(auth, email, password);
     const user = userresponse.user;
-    await addDoc(doc(db, "users", user.uid), {
+    await addDoc(collection(db, "user"), {
+      userId: user.uid,
       name: name,
       email: email,
       authProvider: "local",

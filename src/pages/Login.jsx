@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import {login, signup} from '../Firebase/Setup';
 
 const Login = () => {
   const [state, setState] = useState ('Sign Up');
@@ -9,9 +9,18 @@ const Login = () => {
   const [name, setName] = useState('');
   
 
-  const onSubmitHandler = async (event) => {
+  // const onSubmitHandler = async (event) => {
+  //   event.preventDefault();
+  //   // Add logic to handle form submission
+  // };
+
+ const user_auth = async (event) => {
     event.preventDefault();
-    // Add logic to handle form submission
+    if (state === 'Sign Up') {
+      await signup(email, password, name);
+    } else {
+      await login(email, password);
+    }
   };
 
   return (
@@ -31,7 +40,7 @@ const Login = () => {
           <p>Full Name</p>
        
           <input className='border border-red-300 rounded w-full p-2 mt-1'
-            type="text" value={name} placeholder="Name"
+            type="text"placeholder="Name" value={name} 
             onChange={(e) => setName(e.target.value)} required/> 
         </div>
          }
@@ -64,11 +73,13 @@ const Login = () => {
      } 
      
         {/* create account btn */}
-        <button className='bg-red-500 hover:bg-red-700 w-full text-white text-base font-bold py-2 px-4 rounded-md'  onClick={onSubmitHandler}>
+        <button type="submit" className='bg-red-500 hover:bg-red-700 w-full text-white text-base font-bold py-2 px-4 rounded-md'  
+          onClick={user_auth}>
           {state === 'Sign Up' ? "Create Account" : "Login"}
         </button>
                                    
        <button type="button" onClick={() => setState(state === 'Sign Up' ? 'Login' : 'Sign Up')}>
+        
          {/*when we get signup we will get the first message (already have a account) & click login the will get second message*/}
         {state === 'Sign Up' ? <span className='text-green-700 cursor-pointer'> Already have an account? <span onClick={()=> setState('Login')} className='text-red-600 underline'>Login here</span></span> 
         : <span className='text-red-600 cursor-pointer'>Don&apos;t have an account? <span onClick={()=> setState('Sign Up')} className='text-green-700 underline cursor-pointer'>SignUp here</span></span>}
