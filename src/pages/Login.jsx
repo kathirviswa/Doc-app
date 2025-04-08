@@ -2,7 +2,7 @@ import { useState } from 'react';
 import {login, signup} from '../Firebase/Setup';
 
 const Login = () => {
-  const [state, setState] = useState ('Sign Up');
+  const [state, setState] = useState ('Sign In');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -17,9 +17,11 @@ const Login = () => {
  const user_auth = async (event) => {
     event.preventDefault();
     if (state === 'Sign Up') {
-      await signup(email, password, name);
-    } else {
       await login(email, password);
+    } 
+    else 
+    {
+      await signup(name,email, password);
     }
   };
 
@@ -72,11 +74,10 @@ const Login = () => {
             </div>
      } 
      
-        {/* create account btn */}
-        <button type="submit" className='bg-red-500 hover:bg-red-700 w-full text-white text-base font-bold py-2 px-4 rounded-md'  
-          onClick={user_auth}>
-          {state === 'Sign Up' ? "Create Account" : "Login"}
-        </button>
+    {/* create account btn */}
+    <button onClick={user_auth} type="submit" className='bg-red-500 hover:bg-red-700 w-full text-white text-base font-bold py-2 px-4 rounded-md'>
+        {state === 'Sign Up' ? "Create Account" : "Login"}
+     </button>
                                    
        <button type="button" onClick={() => setState(state === 'Sign Up' ? 'Login' : 'Sign Up')}>
         

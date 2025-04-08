@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { CiMenuFries } from "react-icons/ci";
 import { assets } from "../assets/assets";
+import {logout} from '../Firebase/Setup'
 
 
 
@@ -55,7 +56,7 @@ const Navbar = () => {
             <p  onClick={()=>navigate('my-profile')}  className='hover:text-black cursor-pointer'>My Profile</p>
             <p  onClick={()=>navigate('my-appointments')} className='hover:text-black cursor-pointer'>My Appointments</p>
               {/*when click the logout buttons. To boolean data is false. Its show the createAccount Button */}
-            <p  onClick={()=>setToken(false)} className='hover:text-black cursor-pointer'>Logout</p>
+              <p onClick={() => { setToken(false); logout(); navigate('/login'); }} className='hover:text-black cursor-pointer py-1'>Logout</p>
             </div>
            </div>
           

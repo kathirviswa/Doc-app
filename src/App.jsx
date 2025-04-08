@@ -1,8 +1,9 @@
-import { BrowserRouter,Route , Routes} from 'react-router-dom';
+import { BrowserRouter,Route ,Routes, useNavigate} from 'react-router-dom';
 import { useEffect } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './Firebase/Setup';
-import { useNavigate } from 'react-router-dom';
+
+
 //Page Components
 import Home from './pages/Home';
 import About from './pages/About';
@@ -17,18 +18,15 @@ import MyProfile from './pages/MyProfile';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
+const navigate = useNavigate();
 const App = () => {
 
-  const useNavigate = useNavigate();
-  useEffect(() => {      // Check if user is logged in..(user)parmeter passed
+  useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
       if (user) {
-        console.log("logged in");
-        navigate ('/')
-      } 
-      else{
-        console.log("logged out");
-        navigate ('/login')
+        navigate("/");
+      } else {
+        navigate("/login");
       }
     })
   }, []);
