@@ -22,15 +22,21 @@ import Footer from './components/Footer';
 
 const App = () => {
 
-  useEffect(() => {
-    onAuthStateChanged(auth, async (user) => {
+  const navigate = useNavigate();
+
+  // to passed the parameter in user
+  useEffect(() => {    
+    onAuthStateChanged(auth,async (user) => {
       if (user) {
+        console.log ("Logged In");
         navigate("/");
-      } else {
+      }
+      else {
+        console.log ("Logged Out");
         navigate("/login");
       }
     })
-  }, []);
+  },[]);
 
   return (
     <div  className='mx-4 sm:mx-[10%]'>
@@ -38,7 +44,7 @@ const App = () => {
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path='/' element={<Home/    >}/>
+        <Route path='/' element={<Home/>}/>
         <Route path='/doctors' element={<Doctors/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path="/doctors/:speciality" element={<Doctors/>}/>
