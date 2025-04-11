@@ -22,21 +22,21 @@ import Footer from './components/Footer';
 
 const App = () => {
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  // to passed the parameter in user
-  useEffect(() => {    
-    onAuthStateChanged(auth,async (user) => {
-      if (user) {
-        console.log ("Logged In");
-        navigate("/");
-      }
-      else {
-        console.log ("Logged Out");
-        navigate("/login");
-      }
-    })
-  },[]);
+  // // to passed the parameter in user
+  // useEffect(() => {    
+  //   onAuthStateChanged(auth,async (user) => {
+  //     if (user) {
+  //       console.log ("Logged In");
+  //       navigate("/");
+  //     }
+  //     else {
+  //       console.log ("Logged Out");
+  //       navigate("/login");
+  //     }
+  //   })
+  // },[]);
 
   return (
     <div  className='mx-4 sm:mx-[10%]'>
