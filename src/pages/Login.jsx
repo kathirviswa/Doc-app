@@ -78,10 +78,10 @@ const Login = () => {
      } 
      
     {/* create account btn */}
-    {/* <button onClick={user_auth} type="submit" className='bg-red-500 hover:bg-red-700 w-full text-white text-base font-bold py-2 px-4 rounded-md'>
+    <button onClick={user_auth} type="submit" className='bg-red-500 hover:bg-red-700 w-full text-white text-base font-bold py-2 px-4 rounded-md'>
         {state}
        
-     </button> */}
+     </button>
                                    
        <button type="button" onClick={() => setState(state === 'Sign Up' ? 'Login' : 'Sign Up')}>
         
