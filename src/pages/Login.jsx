@@ -14,9 +14,10 @@ const Login = () => {
   //   // Add logic to handle form submission
   // };
 
+  // auth function
  const user_auth = async (event) => {
     event.preventDefault();
-    if (state === 'Sign Up') {
+    if (state === 'Sign In') {
       await login(email, password);
     } 
     else 
@@ -42,9 +43,9 @@ const Login = () => {
           <p>Full Name</p>
        
           <input className='border border-red-300 rounded w-full p-2 mt-1'
-            type="text"placeholder="Name" value={name} 
+            type="text" placeholder="Your Name" value={name} 
             onChange={(e) => setName(e.target.value)} required/> 
-        </div>
+        </div> 
          }
 
         {/* E-mail */}

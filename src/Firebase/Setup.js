@@ -24,9 +24,9 @@ const signup = async (email, password, name) => {
     const userresponse = await createUserWithEmailAndPassword(auth, email, password);
     const user = userresponse.user;
     await addDoc(collection(db, "user"), {
-      userId: user.uid,
-      name: name,
-      email: email,
+      uid: user.uid,   // uid is user id  
+       name,
+       email,
       authProvider: "local",
     });
     
