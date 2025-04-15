@@ -16,6 +16,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
+
 const db = getFirestore(app);
 
 //create function User in signup
@@ -56,4 +57,4 @@ const logout = async () => {
     signOut(auth);
 }
 //export signup, login, logout db, auth
-export { auth, db, signup, login, logout };
+export { auth, db, signup, login, logout};
