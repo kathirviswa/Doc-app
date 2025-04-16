@@ -24,7 +24,7 @@ const Login = () => {
 
     if (state === 'Sign In') {
       await login(email, password);
-      toast.success("Login successful!"); // login successfull message
+      // toast.success("Login successful!"); // login successfull message
     } 
     else 
     {
