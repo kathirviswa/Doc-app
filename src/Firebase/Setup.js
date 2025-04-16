@@ -23,16 +23,17 @@ const db = getFirestore(app);
 //create function User in signup
 const signup = async (email, password, name) => {
   try {
-    const userresponse = await createUserWithEmailAndPassword(auth, email, password);
-    const user = userresponse.user;
+    const res = await createUserWithEmailAndPassword(auth, email, password);
+    const user = res.user;
     await addDoc(collection(db, "user"), {
       uid: user.uid,   // uid is user id  
        name,
+       authProvider: "local",
        email,
-      authProvider: "local",
-    });
-    
+     
+    }); 
   } 
+  
   catch (error) { 
     console.log(error);
     // alert(error);

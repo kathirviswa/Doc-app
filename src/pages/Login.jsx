@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import {login, signup} from '../Firebase/Setup';
 import { LoaderCircle } from 'lucide-react';
+import { toast } from 'react-hot-toast';
+
 
 const Login = () => {
   const [state, setState] = useState ('Sign In');
@@ -24,14 +26,17 @@ const Login = () => {
     if (state === 'Sign In') {
       await login(email, password);
     } 
-    else 
-    {
-      await signup(name,email, password);
+    else {
+      if (password !== confirmPassword) {
+        toast.error("Passwords do not match!");
+        setIsLoading(false);
+        return;
+      }
+      await signup(email, password, name); // ✅ correct parameter order
     }
+  
     setIsLoading(false);
-     delay(3000);
-
-    
+    delay = 1000;
   };
 
   return (
