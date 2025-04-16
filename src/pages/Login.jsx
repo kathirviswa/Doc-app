@@ -28,6 +28,7 @@ const Login = () => {
       } else {
         if (password !== confirmPassword) {
           toast.error("Passwords do not match!");
+          toast.error("Signin failed!");
           setIsLoading(false);
           return;
         }
