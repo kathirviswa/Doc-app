@@ -23,12 +23,11 @@ const Login = () => {
     setIsLoading(true);
 
     if (state === 'Sign In') {
-      if (!email || !password) {
-        // toast.error("Please enter email and password!");
-        setIsLoading(false);
+      await login(email, password);
+       if (!email || !password) {
+        toast.error("Please enter email and password.");
         return;
       }
-      await login(email, password);
        toast.success("Login successful!");  // login successfull message
     } 
     else 
@@ -37,6 +36,7 @@ const Login = () => {
       
         toast.error("Passwords do not match!");
        
+        return;
       }
       await signup(email, password, name);
       toast.success("Signup successful!");
