@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import {login, signup} from '../Firebase/Setup';
+import { LoaderCircle } from 'lucide-react';
 
 const Login = () => {
   const [state, setState] = useState ('Sign In');
@@ -7,6 +8,8 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [name, setName] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
   
 
   // const onSubmitHandler = async (event) => {
@@ -17,6 +20,7 @@ const Login = () => {
   // auth function
  const user_auth = async (event) => {
     event.preventDefault();
+     setIsLoading(true);
     if (state === 'Sign In') {
       await login(email, password);
     } 
@@ -24,10 +28,16 @@ const Login = () => {
     {
       await signup(name,email, password);
     }
+    setIsLoading(false);
+     delay(3000);
+
+    
   };
 
   return (
-    
+    isLoading?
+    <LoaderCircle className='m-auto min-h-[80vh] w-9 animate-spin text-red-600'/>
+    :  
     <form className="min-h-[80vh] flex items-center ">
      
       <div className='flex flex-col gap-3 m-auto items-start p-8 min-w-[340px] sm:min-w-96 border text-zinc-600 rounded-xl shadow-2xl transform transition-all hover:scale-105 duration-500 '>
