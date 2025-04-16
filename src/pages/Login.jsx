@@ -11,13 +11,6 @@ const Login = () => {
   const [name, setName] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  
-
-  // const onSubmitHandler = async (event) => {
-  //   event.preventDefault();
-  //   // Add logic to handle form submission
-  // };
-
   // auth function
  const user_auth = async (event) => {
     event.preventDefault();
@@ -26,9 +19,10 @@ const Login = () => {
       await login(email, password);
       if (!email || !password) {
         toast.error("Please enter email and password!");
-        return;
+      
       }
       toast.success("Login successful!"); // login successfull message
+      return;
     } 
     else 
     {
