@@ -27,9 +27,9 @@ const Login = () => {
   };
 
   return (
-  
-    <form className="min-h-[80vh] flex items-center">
-
+    
+    <form className="min-h-[80vh] flex items-center ">
+     
       <div className='flex flex-col gap-3 m-auto items-start p-8 min-w-[340px] sm:min-w-96 border text-zinc-600 rounded-xl shadow-2xl transform transition-all hover:scale-105 duration-500 '>
        
         <p className='text-2xl font-semibold'>{state === 'Sign Up' ? "Create your Account" : "Login to your account"}</p>
@@ -80,7 +80,7 @@ const Login = () => {
     {/* create account btn */}
     <button onClick={user_auth} type="submit" className='bg-red-500 hover:bg-red-700 w-full text-white text-base font-bold py-2 px-4 rounded-md'>
         {state}
-       
+        {/* {state === 'Sign Up' ? "Create Account" : "Login"} */}
      </button>
                                    
        <button type="button" onClick={() => setState(state === 'Sign Up' ? 'Login' : 'Sign Up')}>
