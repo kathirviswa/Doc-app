@@ -1,5 +1,48 @@
 import { assets} from "../assets/assets"
 import { useState } from "react";
+import { auth } from "../Firebase/Setup"; // ensure this exports firebase auth instance
+import { onAuthStateChanged } from "firebase/auth";
+import { useEffect } from "react";
+
+
+
+useEffect(() => {
+  const unsubscribe = onAuthStateChanged(auth, (user) => {
+    if (user) {
+      setUserData((prev) => ({
+        ...prev,
+        name: user.displayName || "No Name",
+        email: user.email || "",
+        image: user.photoURL || assets.profile_pic, // fallback to default
+      }));
+    }
+  });
+
+  return () => unsubscribe(); // cleanup
+}, []);
+
+import { updateProfile } from "firebase/auth";
+
+// Inside the onClick for Save:
+const handleSave = async () => {
+  try {
+    if (auth.currentUser) {
+      await updateProfile(auth.currentUser, {
+        displayName: userData.name,
+        photoURL: userData.image
+      });
+      // You could also save other info like phone/address to Firestore here
+    }
+    setIsEdit(false);
+  } catch (err) {
+    console.error("Error updating profile:", err);
+  }
+};
+
+
+
+
+
 const MyProfile = () => {
 
   const [userData,setUserData] = useState({
