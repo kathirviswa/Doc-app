@@ -1,13 +1,5 @@
 import { assets} from "../assets/assets"
 import { useState } from "react";
-import { auth } from "../Firebase/Setup"; // ensure this exports firebase auth instance
-import { onAuthStateChanged } from "firebase/auth";
-import { useEffect } from "react";
-import { updateProfile } from "firebase/auth";
-
-
-
-
 const MyProfile = () => {
 
   const [userData,setUserData] = useState({
@@ -26,42 +18,6 @@ const MyProfile = () => {
   })
   // initiziles boolean data (false) and if the change it (true) is get input field
   const [isEdit, setIsEdit] = useState(false)
-
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUserData((prev) => ({
-          ...prev,
-          name: user.displayName || "No Name",
-          email: user.email || "",
-          image: user.photoURL || assets.profile_pic, // fallback to default
-        }));
-      }
-    });
-  
-    return () => unsubscribe(); // cleanup
-  }, []);
-  
-  
-  
-  // Inside the onClick for Save:
-  const handleSave = async () => {
-    try {
-      if (auth.currentUser) {
-        await updateProfile(auth.currentUser, {
-          displayName: userData.name,
-          photoURL: userData.image
-        });
-        // You could also save other info like phone/address to Firestore here
-      }
-      setIsEdit(false);
-    } catch (err) {
-      console.error("Error updating profile:", err);
-    }
-  };
-  
-
   return (
     
     <div className="max-w-lg flex flex-col gap-2 text-sm">
@@ -159,7 +115,7 @@ const MyProfile = () => {
 <div className="mt-10">
   { //When the isEdit is (true), then we will add the save information btn.if it is (false) We provide Edit btn..                          
     isEdit ? 
-    <button  className="border border-red-500 px-8 py-2 rounded-full shadow-md hover:bg-red-600 hover:text-white transition-all" onClick={handleSave}> Save Informations </button> 
+    <button className="border border-red-500 px-8 py-2 rounded-full shadow-md hover:bg-red-600 hover:text-white transition-all" onClick={()=>setIsEdit(false)}> Save Informations </button> 
   : <button className="border border-red-500 px-8 py-2 rounded-full shadow-md hover:bg-red-600 hover:text-white transition-all" onClick={()=>setIsEdit(true)}> Edit Profile </button>
 }
 </div>
