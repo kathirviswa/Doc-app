@@ -36,12 +36,14 @@ const Login = () => {
         toast.success("Signup successful!");
       }
     } catch (error) {
+      // Handle login/signup errors
       toast.error(error.message || "Authentication failed!");
       console.error("Auth Error:", error);
     }
   
     setIsLoading(false);
   };
+  
 
   return (
     isLoading?
