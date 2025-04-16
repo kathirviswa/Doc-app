@@ -130,7 +130,7 @@ import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./Firebase/Setup";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // Page Components
 import Home from "./pages/Home";
