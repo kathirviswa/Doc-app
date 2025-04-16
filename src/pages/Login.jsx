@@ -24,7 +24,7 @@ const Login = () => {
 
     if (state === 'Sign In') {
       if (!email || !password) {
-        toast.error("Please enter email and password!");
+        // toast.error("Please enter email and password!");
         setIsLoading(false);
         return;
       }
