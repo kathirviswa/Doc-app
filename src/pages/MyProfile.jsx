@@ -6,41 +6,6 @@ import { useEffect } from "react";
 import { updateProfile } from "firebase/auth";
 
 
-useEffect(() => {
-  const unsubscribe = onAuthStateChanged(auth, (user) => {
-    if (user) {
-      setUserData((prev) => ({
-        ...prev,
-        name: user.displayName || "No Name",
-        email: user.email || "",
-        image: user.photoURL || assets.profile_pic, // fallback to default
-      }));
-    }
-  });
-
-  return () => unsubscribe(); // cleanup
-}, []);
-
-
-
-// Inside the onClick for Save:
-const handleSave = async () => {
-  try {
-    if (auth.currentUser) {
-      await updateProfile(auth.currentUser, {
-        displayName: userData.name,
-        photoURL: userData.image
-      });
-      // You could also save other info like phone/address to Firestore here
-    }
-    setIsEdit(false);
-  } catch (err) {
-    console.error("Error updating profile:", err);
-  }
-};
-
-
-
 
 
 const MyProfile = () => {
@@ -61,6 +26,42 @@ const MyProfile = () => {
   })
   // initiziles boolean data (false) and if the change it (true) is get input field
   const [isEdit, setIsEdit] = useState(false)
+
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUserData((prev) => ({
+          ...prev,
+          name: user.displayName || "No Name",
+          email: user.email || "",
+          image: user.photoURL || assets.profile_pic, // fallback to default
+        }));
+      }
+    });
+  
+    return () => unsubscribe(); // cleanup
+  }, []);
+  
+  
+  
+  // Inside the onClick for Save:
+  const handleSave = async () => {
+    try {
+      if (auth.currentUser) {
+        await updateProfile(auth.currentUser, {
+          displayName: userData.name,
+          photoURL: userData.image
+        });
+        // You could also save other info like phone/address to Firestore here
+      }
+      setIsEdit(false);
+    } catch (err) {
+      console.error("Error updating profile:", err);
+    }
+  };
+  
+
   return (
     
     <div className="max-w-lg flex flex-col gap-2 text-sm">
