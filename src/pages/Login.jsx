@@ -17,31 +17,30 @@ const Login = () => {
   // };
 
   // auth function here 
- const user_auth = async (event) => {
+  const user_auth = async (event) => {
     event.preventDefault();
-     
     setIsLoading(true);
-
-    if (state === 'Sign In') {
-      await login(email, password);
-       if (!email || !password) {
-        toast.error("Please enter email and password.");
-        return;
+  
+    try {
+      if (state === 'Sign In') {
+        await login(email, password);
+        toast.success("Login successful!");
+      } else {
+        if (password !== confirmPassword) {
+          toast.error("Passwords do not match!");
+          setIsLoading(false);
+          return;
+        }
+  
+        await signup(email, password, name);
+        toast.success("Signup successful!");
       }
-       toast.success("Login successful!");  // login successfull message
-    } 
-    else 
-    {
-      if (password !== confirmPassword) {
-      
-        toast.error("Passwords do not match!");
-       
-        return;
-      }
-      await signup(email, password, name);
-      toast.success("Signup successful!");
+    } catch (error) {
+      toast.error(error.message || "Authentication failed!");
+      console.error("Auth Error:", error);
     }
-    setIsLoading(false); 
+  
+    setIsLoading(false);
   };
 
   return (
@@ -58,6 +57,7 @@ const Login = () => {
         <p className="mt-2 text-sm text-gray-600">
           { state === 'Sign Up' ? "Join us and start your Appointment!":"Welcome back!"}
           </p>
+       
        {/*Ternory Operator/ If state is sign up then not showing name input label in login page*/}
           
        {
