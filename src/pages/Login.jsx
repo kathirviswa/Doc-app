@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import {login, signup} from '../Firebase/Setup';
 import { LoaderCircle } from 'lucide-react';
-import { toast } from 'react-hot-toast';
+import { toast } from 'react-toastify';
 
 
 const Login = () => {
