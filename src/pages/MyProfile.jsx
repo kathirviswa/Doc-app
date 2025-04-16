@@ -3,7 +3,7 @@ import { useState } from "react";
 import { auth } from "../Firebase/Setup"; // ensure this exports firebase auth instance
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
-
+import { updateProfile } from "firebase/auth";
 
 
 useEffect(() => {
@@ -21,7 +21,7 @@ useEffect(() => {
   return () => unsubscribe(); // cleanup
 }, []);
 
-import { updateProfile } from "firebase/auth";
+
 
 // Inside the onClick for Save:
 const handleSave = async () => {
