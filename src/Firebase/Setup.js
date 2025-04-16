@@ -23,8 +23,8 @@ const db = getFirestore(app);
 //create function User in signup
 const signup = async (email, password, name) => {
   try {
-    const res = await createUserWithEmailAndPassword(auth, email, password);
-    const user = res.user;
+    const userresponse = await createUserWithEmailAndPassword(auth, email, password);
+    const user = userresponse.user;
     await addDoc(collection(db, "user"), {
       uid: user.uid,   // uid is user id  
        name,
@@ -32,8 +32,9 @@ const signup = async (email, password, name) => {
        email,
      
     }); 
+    return user;
   } 
-  
+
   catch (error) { 
     console.log(error);
     // alert(error);
@@ -61,4 +62,4 @@ const logout = async () => {
     signOut(auth);
 }
 //export signup, login, logout db, auth
-export { auth, db, signup, login, logout};
+export { auth, db, login, signup, logout};

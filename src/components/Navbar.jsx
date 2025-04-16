@@ -10,7 +10,7 @@ import { logout } from '../Firebase/Setup';
 const Navbar = () => {
   const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState (false)
-  const [token,  setToken] = useState (true) ///boolean data token  default true. Suppose this token data false show the create account button
+  const [token, setToken] = useState (true) ///boolean data token  default true. Suppose this token data false show the create account button
     
   return (
 

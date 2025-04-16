@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import {login, signup} from '../Firebase/Setup';
 import { LoaderCircle } from 'lucide-react';
-import { toast } from 'react-toastify';
-
 
 const Login = () => {
   const [state, setState] = useState ('Sign In');
@@ -26,17 +24,11 @@ const Login = () => {
     if (state === 'Sign In') {
       await login(email, password);
     } 
-    else {
-      if (password !== confirmPassword) {
-        toast.error("Passwords do not match!");
-        setIsLoading(false);
-        return;
-      }
-      await signup(email, password, name); // ✅ correct parameter order
+    else 
+    {
+      await signup(email, password, name);
     }
-  
-    setIsLoading(false);
-    delay = 1000;
+    setIsLoading(false); 
   };
 
   return (
@@ -83,14 +75,14 @@ const Login = () => {
 
       {/* Confrim-password */}
       {/* Ternory Operator/ If state is sign up then not showing confrim password input label in login page */}
-   {/* { 
+   { 
        state === "Sign Up" && <div className='w-full'>
        <p>Confrim Password</p>
           <input className='border border-red-300 rounded w-full p-2 mt-1'
             type="confirm-password" value={confirmPassword} placeholder="confirm-Password"
             onChange={(e) => setConfirmPassword(e.target.value)} required/>
             </div>
-     }  */}
+     } 
      
     {/* create account btn */}
     <button onClick={user_auth} type="submit" className='bg-red-500 hover:bg-red-700 w-full text-white text-base font-bold py-2 px-4 rounded-md'>
