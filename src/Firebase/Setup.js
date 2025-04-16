@@ -1,8 +1,8 @@
 import { initializeApp } from "firebase/app";
-import { createUserWithEmailAndPassword,updateProfile, getAuth,signInWithEmailAndPassword,signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth,signInWithEmailAndPassword,signOut } from "firebase/auth";
 import { getFirestore ,collection, addDoc} from "firebase/firestore";
 import { toast } from "react-toastify";
-import { updateProfile } from "firebase/auth";
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyC4GILSGDouUCSh7MbFRYbzmxGKg4kkQQk",
@@ -32,7 +32,7 @@ const signup = async (email, password, name) => {
        email,
      
     }); 
-    return user;
+    return 
   } 
 
   catch (error) { 
@@ -41,7 +41,6 @@ const signup = async (email, password, name) => {
    toast.error(error.code.split("/")[1].split("-").join(" ")); // remove the unnecessary characters word in error message text
   }
 };
-
 
 //create function User in login
 
@@ -62,12 +61,5 @@ const login = async (email, password) => {
 const logout = async () => {
     signOut(auth);
 }
-const updateProfile = async (user, data) => {
-  try {
-    await updateProfile(user, data);
-  } catch (err) {
-    console.error("Error updating profile:", err);
-  }
-};
 //export signup, login, logout db, auth
-export { auth, db, login, signup, logout , updateProfile };
+export { auth, db, login, signup, logout};
