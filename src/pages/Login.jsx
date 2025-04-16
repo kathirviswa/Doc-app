@@ -23,6 +23,11 @@ const Login = () => {
     setIsLoading(true);
 
     if (state === 'Sign In') {
+      if (!email || !password) {
+        toast.error("Please enter email and password!");
+        setIsLoading(false);
+        return;
+      }
       await login(email, password);
        toast.success("Login successful!");  // login successfull message
     } 
