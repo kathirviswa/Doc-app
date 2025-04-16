@@ -16,7 +16,7 @@ const Login = () => {
   //   // Add logic to handle form submission
   // };
 
-  // auth function here 
+  // auth functions here  
  const user_auth = async (event) => {
     event.preventDefault();
      
@@ -29,12 +29,12 @@ const Login = () => {
     else 
     {
       if (password !== confirmPassword) {
-        toast.error("Passwords do not match!");
+        toast.error("Passwords do not match!"); //  password not match
        
         return;
       }
       await signup(email, password, name);
-      toast.success("Signup successful!");
+      toast.success("Signup successful!"); // signup successfull message 
     }
     setIsLoading(false); 
   };
