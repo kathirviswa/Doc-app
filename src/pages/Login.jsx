@@ -17,34 +17,27 @@ const Login = () => {
   // };
 
   // auth function here 
-  const user_auth = async (event) => {
+ const user_auth = async (event) => {
     event.preventDefault();
+     
     setIsLoading(true);
-  
-    try {
-      if (state === 'Sign In') {
-        await login(email, password);
-        toast.success("Login successful!");
-      } else {
-        if (password !== confirmPassword) {
-          toast.error("Passwords do not match!");
-          toast.error("Signin failed!");
-          setIsLoading(false);
-          return;
-        }
-  
-        await signup(email, password, name);
-        toast.success("Signup successful!");
+
+    if (state === 'Sign In') {
+      await login(email, password);
+       toast.success("Login successful!");  // login successfull message
+    } 
+    else 
+    {
+      if (password !== confirmPassword) {
+        toast.error("Passwords do not match!");
+       
+        return;
       }
-    } catch (error) {
-      // Handle login/signup errors
-      toast.error(error.message || "Authentication failed!");
-      console.error("Auth Error:", error);
+      await signup(email, password, name);
+      toast.success("Signup successful!");
     }
-  
-    setIsLoading(false);
+    setIsLoading(false); 
   };
-  
 
   return (
     isLoading?
