@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import {login, signup} from '../Firebase/Setup';
 import { LoaderCircle } from 'lucide-react';
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const [state, setState] = useState ('Sign In');
@@ -23,10 +24,17 @@ const Login = () => {
      setIsLoading(true);
     if (state === 'Sign In') {
       await login(email, password);
+      toast.success("Login successful!"); // login successfull message
     } 
     else 
     {
+      if (password !== confirmPassword) {
+        toast.error("Passwords do not match!");
+        return;
+      }
       await signup(email, password, name);
+      toast.success("Signup successful!");
+     
     }
     setIsLoading(false); 
   };
