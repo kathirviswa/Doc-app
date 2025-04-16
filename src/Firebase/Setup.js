@@ -42,23 +42,6 @@ const signup = async (email, password, name) => {
   }
 };
 
-// Inside the onClick for Save:
-const handleSave = async () => {
-  try {
-    if (auth.currentUser) {
-      await updateProfile(auth.currentUser, {
-        displayName: userData.name,
-        photoURL: userData.image
-      });
-      // You could also save other info like phone/address to Firestore here
-    }
-    setIsEdit(false);
-  } catch (err) {
-    console.error("Error updating profile:", err);
-  }
-};
-
-
 
 //create function User in login
 

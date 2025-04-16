@@ -158,7 +158,7 @@ const MyProfile = () => {
 <div className="mt-10">
   { //When the isEdit is (true), then we will add the save information btn.if it is (false) We provide Edit btn..                          
     isEdit ? 
-    <button className="border border-red-500 px-8 py-2 rounded-full shadow-md hover:bg-red-600 hover:text-white transition-all" onClick={()=>setIsEdit(false)}> Save Informations </button> 
+    <button  className="border border-red-500 px-8 py-2 rounded-full shadow-md hover:bg-red-600 hover:text-white transition-all" onClick={handleSave}> Save Informations </button> 
   : <button className="border border-red-500 px-8 py-2 rounded-full shadow-md hover:bg-red-600 hover:text-white transition-all" onClick={()=>setIsEdit(true)}> Edit Profile </button>
 }
 </div>
