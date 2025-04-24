@@ -10,7 +10,7 @@ const firebaseConfig = {
   projectId: "doc-app-b89e0",
   storageBucket: "doc-app-b89e0.firebasestorage.app",
   messagingSenderId: "818778023609",
-  appId: "1:818778023609:web:bf2b88a86b779237291d68"
+  appId: "1:818778023609:web:bf2b88a86b779237291d68",
 };
 
 // Initialize Firebase
@@ -61,5 +61,5 @@ const login = async (email, password) => {
 const logout = async () => {
     signOut(auth);
 }
-//export signup, login, logout db, auth
+//export signup, login, logout db, auth.
 export { auth, db, login, signup, logout};
